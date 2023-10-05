@@ -1,0 +1,40 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="logo">
+            <img src="{% static 'media/logo_texto.png' %}" alt="">
+        </div>
+        <div class="form">
+            <form method="post" class="card-login">
+                {% csrf_token %}
+                <h1>LOGIN</h1>
+                <div class="textfield">
+
+                    <label for="user">Usuário</label>
+                    <input type="text" name="user" placeholder="Usuário">
+                </div>
+                <div class="textfield">
+             
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Senha">
+                </div>
+                
+                <input class="btn-login" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <title>SIGN IN</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="logo">
+            <img src="{% static 'media/logo_texto.png' %}" alt="">
+        </div>
+        
+        <div class="form card-login">
+            <h1>sign in</h1>
+            <form method="post">
+                {% csrf_token %}
+    
+                <div class="textfield">
+
+                    <label for="user">NOME</label>
+                    <input type="text" name="nome" placeholder="Nome">
+                </div>
+                <div class="textfield">
+             
+                    <label for="senha">SOBRENOME</label>
+                    <input type="text" name="sobrenome" placeholder="Sobrenome">
+                </div>
+                <div class="textfield">
+             
+                    <label for="email">EMAIL</label>
+                    <input type="email" name="email" placeholder="E-mail">
+                </div>
+                <div class="textfield">
+             
+                    <label for="senha">SENHA</label>
+                    <input type="password" name="senha" placeholder="Senha">
+                </div>
+                <div class="textfield">
+             
+                    <label for="senha">CONFIRME A SENHA</label>
+                    <input type="password" name="senha-confirmar" placeholder="Confirme a senha">
+                </div>
+                
+                <input class="btn-login" type="submit" value="sign in">
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
+
