@@ -1,0 +1,33 @@
+.image-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos da imagem */
+.image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilos do botão "Like" */
+.like-button {
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Estilos da seção de comentários */
+.comments {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 10px;
+}

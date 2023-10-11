@@ -9,9 +9,7 @@ class Image(models.Model):
     
     class Meta:
         db_table = 'image'
-
-    def add_like(self,user):
-        self.like.add(user)
+    
 
     
 class Like(models.Model):

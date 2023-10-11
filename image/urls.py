@@ -1,7 +1,7 @@
 from django.urls import path
 from django.urls import path, include
 
-from .views import image_view,home
+from .views import home,render_image,post_image_component
 
 
 
@@ -9,7 +9,8 @@ from .views import image_view,home
 
 urlpatterns = [
     #path('', post, name='post'),
-    path('view/', image_view),
     path('home/', home),
+    path('<int:image_id>/', render_image),
+    path('post_image/', post_image_component),
 
 ]
