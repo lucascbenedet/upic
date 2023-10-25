@@ -12,14 +12,18 @@
 }
 
 /* Estilos do botão "Like" */
-.like-button {
-    background-color: #ff4500;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
+
+
+#like-heart {
     cursor: pointer;
+    transition: color 0.3s; /* Adicione uma transição de cor de 0.3 segundos */
+    font-size: 25px;
 }
+
+#like-heart.fas {
+    color: red; /* Cor vermelha para o ícone preenchido */
+}
+
 
 /* Estilos da seção de comentários */
 .comments {

@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="">
+                <img src="{% static 'media/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+        <ul class="navbar-links">
+            <button class="add-button" onclick="openModal()">
+                <span class="plus-sign">+</span>
+            </button>
+            <li><a href="" class="link">Home</a></li>
+            <li><a href="" class="link">Gallery</a></li>
+            <li><a href="" class="link">Profile</a></li>
+            
+        </ul>
+    </nav>
+        <!-- Modal -->
+        <div id="uploadModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <form method="post" enctype="multipart/form-data" action="{% url 'image:post_image' %}" class="upload-form">
+                    {% csrf_token %}
+                    <div class="textfield">
+                        <label for="image">Image</label>
+                        <input type="file" name="image"></div>
+                    <div class="textfield">
+                        <label for="name">Title</label>
+                        <input type="text" name="name" placeholder="Description">    
+                    </div>
+                    <input type="submit" value="Upload" class="modal-button">
+                </form>
+            </div>
+        </div>
+    
+        <script>
+            function openModal() {
+                var modal = document.getElementById('uploadModal');
+                modal.style.display = 'block';
+            }
+            
+            function closeModal() {
+                var modal = document.getElementById('uploadModal');
+                modal.style.display = 'none';
+            }
+            
+            window.onclick = function(event) {
+                var modal = document.getElementById('uploadModal');
+                if (event.target === modal) {
+                    closeModal();
+                }
+            }
+            </script>
+            <div id="block-content">
+                {% block content %}{% endblock %}
+            </div>
+            
+</body>
+</html>
