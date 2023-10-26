@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'image',
     'user_managemant',
+    'galery',
 ]
 
 MIDDLEWARE = [

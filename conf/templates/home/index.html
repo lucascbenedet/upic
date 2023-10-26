@@ -22,7 +22,19 @@
             </button>
             <li><a href="" class="link">Home</a></li>
             <li><a href="" class="link">Gallery</a></li>
-            <li><a href="" class="link">Profile</a></li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'auth:profile' %}" class="link">{{ user.username }}</a>
+            </li>
+            <li>
+                <a href="{% url 'auth:user_logout' %}" class="link">Logout</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'auth:user_login' %}" class="link">Sign in</a>
+            </li>
+            {% endif %}
+            
             
         </ul>
     </nav>

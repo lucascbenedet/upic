@@ -11,7 +11,10 @@ import json
 
 
 def home(request):
-    return render(request,'index.html')
+    context = {
+        'user' : request.user
+    }
+    return render(request,'index.html',context=context)
 
 def post_image_component(request):
     if request.method == 'GET':
