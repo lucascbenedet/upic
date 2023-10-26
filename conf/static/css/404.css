@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-image: url('/Users/lucas/Developer/dev_web/back-end/conf/static/media/4bdb8a9e-cf4b-4a6e-ac6f-483eb56ac57f (2).jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.text {
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    padding: 1em;
+    font-size: 3rem;
+}
+

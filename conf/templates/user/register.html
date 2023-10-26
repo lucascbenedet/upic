@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
-    <title>SIGN IN</title>
+    <title>sign in</title>
 </head>
 <body>
     <div class="main-login">
@@ -22,33 +22,57 @@
                 {% csrf_token %}
     
                 <div class="textfield">
+                    <label for="{{ form.first_name.id_for_label }}">NOME</label>
+                    <input type="text" name="{{ form.first_name.name }}" id="{{ form.first_name.id_for_label }}" placeholder="Nome">
+                    {% if form.first_name.errors %}
+                    <h6>{{form.first_name.errors}}</h6>
+                    {% endif %}
+                </div>
 
-                    <label for="user">NOME</label>
-                    <input type="text" name="nome" placeholder="Nome">
-                </div>
                 <div class="textfield">
              
-                    <label for="senha">SOBRENOME</label>
-                    <input type="text" name="sobrenome" placeholder="Sobrenome">
+                    <label for="{{ form.last_name.id_for_label }}">SOBRENOME</label>
+                    <input type="text" name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}" placeholder="Sobrenome">
+                    {% if form.last_name.errors %}
+                    <h6>{{form.last_name.errors}}</h6>
+                    {% endif %}
                 </div>
+
                 <div class="textfield">
-             
-                    <label for="email">EMAIL</label>
-                    <input type="email" name="email" placeholder="E-mail">
+                    <label for="{{ form.username.id_for_label }}">USUÁRIO</label>
+                    <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" placeholder="Nome de Usuário">
+                    {% if form.username.errors %}
+                    <h6>{{form.username.errors}}</h6>
+                    {% endif %}
                 </div>
+
                 <div class="textfield">
-             
-                    <label for="senha">SENHA</label>
-                    <input type="password" name="senha" placeholder="Senha">
+                    <label for="{{ form.email.id_for_label }}">EMAIL</label>
+                    <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" placeholder="E-mail">
+                    {% if form.email.errors %}
+                    <h6>{{form.email.errors}}</h6>
+                    {% endif %}
                 </div>
+
                 <div class="textfield">
-             
-                    <label for="senha">CONFIRME A SENHA</label>
-                    <input type="password" name="senha-confirmar" placeholder="Confirme a senha">
+                    <label for="{{ form.password1.id_for_label }}">SENHA</label>
+                    <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" placeholder="Senha">
+                    {% if form.password1.errors %}
+                    <h6>{{form.password1.errors}}</h6>
+                    {% endif %}
+                </div>
+
+                <div class="textfield">
+                    <label for="{{ form.password2.id_for_label }}">CONFIRME A SENHA</label>
+                    <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" placeholder="Confirme a senha">
+                    {% if form.password2.errors %}
+                    <h6>{{form.password2.errors}}</h6>
+                    {% endif %}
                 </div>
                 
                 <input class="btn-login" type="submit" value="sign in">
             </form>
+
         </div>
     </div>
     
