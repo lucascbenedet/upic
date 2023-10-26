@@ -26,7 +26,8 @@ def register(request):
     elif request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request,user)
             return redirect('image:home')
         else:
             return render(request, 'register.html', {'form' : form})
