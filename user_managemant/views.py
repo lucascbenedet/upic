@@ -16,6 +16,9 @@ def user_login(request):
         if user:
             login(request, user=user)
             return redirect('image:home')
+        else:
+            return render(request,'user_login.html', context={'errors' : 'Invalid username or password',
+                                                              'username' : username})
         
         return HttpResponse('LOGIN INVÁLIDO')
     
