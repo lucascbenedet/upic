@@ -22,15 +22,24 @@
                 <div class="textfield">
 
                     <label for="user">USUÁRIO</label>
-                    <input type="text" name="user" placeholder="Usuário">
+                    <input type="text" name="user" placeholder="Usuário" {% if errors %} value="{{username}}" {% endif %}>
                 </div>
                 <div class="textfield">
              
                     <label for="senha">SENHA</label>
                     <input type="password" name="senha" placeholder="Senha">
                 </div>
+                <div class="link-register">
+                <h6>Não tem uma conta? <a href="{% url 'auth:register' %}">Registre-se aqui</a></h6>
+                </div>
                 
                 <input class="btn-login" type="submit" value="login">
+                {% if errors %}
+                <div class="errors">
+                    <h6>{{errors}}</h6>
+                </div>
+                
+                {% endif %}
             </form>
         </div>
     </div>
