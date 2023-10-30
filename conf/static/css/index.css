@@ -159,6 +159,7 @@ form{
 
 
 
+
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
@@ -166,10 +167,6 @@ form{
     to {
         transform: translateY(0);
     }
-}
-
-.block-content {
-    margin-top: 65px;
 }
 
 
