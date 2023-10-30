@@ -8,10 +8,8 @@ from .views import home,render_image,post_image_component,like_photo
 
 app_name = 'image'
 urlpatterns = [
-    #path('', post, name='post'),
     path('home/', home, name='home'),
     path('<int:image_id>/', render_image,name='render_image'),
     path('post_image/', post_image_component, name='post_image'),
     path('like/<int:post_id>/',like_photo),
-
 ]

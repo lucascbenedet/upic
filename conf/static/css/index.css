@@ -8,10 +8,14 @@ body {
 }
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Itens na extrema esquerda e direita */
     align-items: center;
-    background-color: transparent;
+    background-color: #15061a;
     padding: 10px 20px;
     box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
     -webkit-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
@@ -25,10 +29,8 @@ body {
 .navbar-links {
     list-style: none;
     display: flex;
-    margin: 0 30px;
+    margin: 0;
     padding: 0;
-    justify-content: center; /* Centraliza os links horizontalmente */
-    align-items: center; /* Centraliza os links verticalmente */
 }
 
 .navbar-links li {
@@ -37,7 +39,7 @@ body {
 
 .link {
     text-decoration: none;
-    color: #e52079;
+    color: #c22c4f;
     position: relative;
     transition: all 0.3s; /* Adiciona transição de 0.3 segundos */
 }
@@ -47,7 +49,7 @@ body {
     position: absolute;
     width: 0;
     height: 2px;
-    background: #e52079;
+    background: #c22c4f;
     bottom: -3px;
     left: 0;
     transition: width 0.3s; /* Adiciona transição para a largura da linha */
@@ -58,7 +60,7 @@ body {
 }
 
 .add-button {
-    background-color: #e52079;
+    background-color: #c22c4f;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -69,7 +71,7 @@ body {
 }
 
 .plus-sign {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .add-button:hover {
@@ -164,6 +166,10 @@ form{
     to {
         transform: translateY(0);
     }
+}
+
+.block-content {
+    margin-top: 65px;
 }
 
 

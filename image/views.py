@@ -20,30 +20,34 @@ def home(request):
 
 @login_required(login_url='auth:user_login')
 def post_image_component(request):
-    if request.method == 'GET':
-        return render(request,'post_image.html')
-    else:
-        
-        data = {
-            'title' : request.POST.get('name'),
-            'image' : request.FILES.get('image'),
-            'user' : request.user.id
-        }
-        serializer = ImageSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return redirect('image:render_image', image_id=serializer.data['id'])
-        return HttpResponse(json.dumps(serializer.errors))
+    data = {
+        'title' : request.POST.get('name'),
+        'image' : request.FILES.get('image'),
+        'user' : request.user.id
+    }
+    serializer = ImageSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return redirect('image:render_image', image_id=serializer.data['id'])
+    return HttpResponse(json.dumps(serializer.errors))
 
 
 def render_image(request,image_id):
-    image_object = Image.objects.get(id=image_id)
-    image = {
-        'image' : image_object.image,
-        'image_id' : image_object.id,
-        'is_liked' : Like.objects.filter(user=request.user,image_id=image_id)
-    }
-    return render(request,'image.html',context=image)
+    if request.method == 'GET':
+        image_object = Image.objects.get(id=image_id)
+        image = {
+            'image' : image_object.image,
+            'image_id' : image_object.id,
+            'is_liked' : Like.objects.filter(user=request.user,image_id=image_id),
+            'comments' : Comment.objects.filter(image_id=image_id)
+        }
+        return render(request,'image.html',context=image)
+    elif request.method == 'POST':
+        comment = request.POST.get('comment')
+        user = request.user
+        post = Comment.objects.create(user=user, text=comment, image_id= image_id)
+        post.save()
+        return redirect('image:render_image',image_id=image_id)        
 
 
 from django.http import JsonResponse
@@ -57,52 +61,3 @@ def like_photo(request, post_id):
         return JsonResponse({'error': str(e)})
 
     return JsonResponse({'message': 'Like updated successfully'})
-
-
-
-
-
-# @api_view(['POST','DELETE'])
-# def like_unlike(request,pk):
-#     if request.method == 'POST':
-#         serializer = LikeSerializer(request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response('Impossível dar like')
-#     else:
-#         try:
-#             like = Like.objects.get(id=pk)
-#             like.delete()
-#         except ValidationError:
-#             return Response("Like não existe")
-
-
-# @api_view(['POST'])
-# def return_like_id(request):
-#     try:
-#         like = Like.objects.get(**request)
-#         return Response({'id' : like.id})
-#     except ValidationError:
-#         return Response("Like não existe")
-
-
-# @api_view(['POST'])
-# def post_delete_comment(request,pk):
-#     if request.method == 'POST':
-#         serializer = CommentSerializer(request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response('Não foi possível comentar')
-#     else:
-#         comment = Comment.objects.get(pk)
-#         comment.delete()
-
-# @api_view(['GET'])
-# def list_comments(request,pk):
-#     comments = Comment.objects.get(image_id=pk)
-#     serializer = ListCommentsSerializer(comments)
-#     return Response(serializer.data)
-    
-

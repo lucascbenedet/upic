@@ -1,8 +1,37 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: #15061a;
+}
+
+.block-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .image-container {
+    align-self: center;
     max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.background{
+    height: 100%;
+    padding: 0 40px;
+    background-color: rgb(17, 17, 17);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilos da imagem */
@@ -15,23 +44,27 @@
 
 
 #like-heart {
+    color: white;
     cursor: pointer;
-    transition: color 0.3s; /* Adicione uma transição de cor de 0.3 segundos */
-    font-size: 25px;
+    transition: color 0.3s; 
+    font-size: 28px;
 }
 
 #like-heart.fas {
-    color: red; /* Cor vermelha para o ícone preenchido */
+    color: #c22c4f; 
 }
 
 
 /* Estilos da seção de comentários */
 .comments {
+    display: flex;
     margin-top: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .comment {
-    background-color: #f2f2f2;
-    padding: 10px;
+    color: white;
     margin-bottom: 10px;
 }

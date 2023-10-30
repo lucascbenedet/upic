@@ -69,6 +69,9 @@
                     <h6>{{form.password2.errors}}</h6>
                     {% endif %}
                 </div>
+                <div class="link-register">
+                    <h6>Já tem uma conta? <a href="{% url 'auth:user_login' %}">Faça login aqui</a></h6>
+                </div>
                 
                 <input class="btn-login" type="submit" value="sign in">
             </form>

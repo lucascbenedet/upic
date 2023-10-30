@@ -21,7 +21,7 @@
                 <span class="plus-sign">+</span>
             </button>
             <li><a href="{% url 'image:home' %}" class="link">Home</a></li>
-            <li><a href="{% url 'gallery:render_gallery' %}" class="link">Gallery</a></li>
+            <li><a href="{% url 'gallery:gallery-page' %}" class="link">Gallery</a></li>
             {% if user.is_authenticated %}
             <li>
                 <a href="{% url 'auth:profile' %}" class="link">{{ user.username }}</a>
@@ -75,7 +75,7 @@
                 }
             }
             </script>
-            <div id="block-content">
+            <div class="block-content" id="block-content">
                 {% block content %}{% endblock %}
             </div>
             

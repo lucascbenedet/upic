@@ -14,21 +14,27 @@
 </head>
 
 <body>
+    <div class="background">
     <div class="image-container">
         <img class="image" src="{{ image.url }}" alt="Image">
         <div class="like-button">
             <i id="like-heart" class="far fa-heart {% if is_liked %}fas{% endif %}"></i>
         </div>
         
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Faça um comentário" name="comment" id="">
+            <input type="submit" value=">">
+        </form>
+
         <div class="comments">
+            {% for comment in comments %}
             <div class="comment">
-                <strong>Usuário 1:</strong> Este é um comentário de exemplo.
+                <strong>{{comment.user.username}} </strong>{{comment.text}}
             </div>
-            <div class="comment">
-                <strong>Usuário 2:</strong> Outro comentário de exemplo.
-            </div>
-            <!-- Adicione mais comentários conforme necessário -->
+            {% endfor %}
         </div>
+    </div>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
