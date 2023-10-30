@@ -17,7 +17,7 @@
             </a>
         </div>
         <ul class="navbar-links">
-            <button class="add-button" onclick="openModal()">
+            <button class="add-button" {% if user.is_authenticated %}onclick="openModal()" {% else %}onclick="window.location.href = '{% url 'auth:user_login' %}'"{% endif %}>                
                 <span class="plus-sign">+</span>
             </button>
             <li><a href="{% url 'image:home' %}" class="link">Home</a></li>
@@ -45,13 +45,14 @@
                 <form method="post" enctype="multipart/form-data" action="{% url 'image:post_image' %}" class="upload-form">
                     {% csrf_token %}
                     <div class="textfield">
-                        <label for="image">Image</label>
-                        <input type="file" name="image"></div>
-                    <div class="textfield">
                         <label for="name">Title</label>
-                        <input type="text" name="name" placeholder="Description">    
+                        <input type="text" name="name" placeholder="Description" class="title">    
                     </div>
-                    <input type="submit" value="Upload" class="modal-button">
+                    <div class="textfield">
+                        <label class="upload" for="image">Select file</label>
+                        <input type="file" name="image"  id="image">
+                    </div>
+                    <input type="submit" value="Upload" class="modal-button" name="upload">
                 </form>
             </div>
         </div>
@@ -59,7 +60,7 @@
         <script>
             function openModal() {
                 var modal = document.getElementById('uploadModal');
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
             }
             
             function closeModal() {

@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.exceptions import ValidationError
 from django.http import HttpResponse
 import json
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -16,6 +17,8 @@ def home(request):
     }
     return render(request,'index.html',context=context)
 
+
+@login_required(login_url='auth:user_login')
 def post_image_component(request):
     if request.method == 'GET':
         return render(request,'post_image.html')

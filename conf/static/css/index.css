@@ -13,6 +13,9 @@ body {
     align-items: center;
     background-color: transparent;
     padding: 10px 20px;
+    box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
+    -webkit-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
+    -moz-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
 }
 
 .navbar-logo img {
@@ -75,6 +78,8 @@ body {
 
 .modal {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -93,23 +98,64 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 3px;
-    width: 50%;
-    margin: 15% auto;
+    width: 30vh;
+    height: fit-content;
     animation: slideDown 1s;
+    justify-content: center;
+    position: relative;
 }
 
 .close {
     float: right;
     cursor: pointer;
+    font-size: 2em;
+    color: #e52079;
+    position: absolute;
+    right: 10px;
+    top: 7px;
 }
 
-.form{
-    width: 50vw;
-    height: 100vh;
+form{
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 1.5em;
 }
+
+.textfield{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.modal-button{
+    width: 50%;
+    border: 1px solid #e52079;
+    border-radius: 3px;
+    transition: 0.2s;
+    padding: 5px;
+    cursor: pointer;
+    align-self: flex-start;
+    outline: none;
+}
+
+.modal-button:hover{
+    background: #9c3b7a;
+}
+
+.title{
+    border: 1px solid #e52079;
+    padding: 5px;
+    border-radius: 3px;
+    width: 70%;
+}
+
+
 
 @keyframes slideDown {
     from {

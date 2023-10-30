@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
 from .serializers import UserSerializer
 from .forms import UserForm
+from image.models import Image
 
 def user_login(request):
     if request.method == 'GET':
@@ -20,7 +21,6 @@ def user_login(request):
             return render(request,'user_login.html', context={'errors' : 'Invalid username or password',
                                                               'username' : username})
         
-        return HttpResponse('LOGIN INVÁLIDO')
     
 def register(request):
     if request.method == 'GET':
@@ -37,7 +37,11 @@ def register(request):
         
 
 def profile(request):
-    return render(request,'profile.html')
+
+    context = {
+        'user_images' : Image.objects.filter(user=request.user)
+    }
+    return render(request,'profile.html',context=context)
 
 def user_logout(request):
     logout(request)

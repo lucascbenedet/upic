@@ -9,6 +9,9 @@ class Image(models.Model):
     
     class Meta:
         db_table = 'image'
+
+    def get_url(self):
+        return self.image.url
     
 
     

@@ -58,7 +58,7 @@ form{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin: 9px 0px;
+    margin: 15px 0px;
 }
 
 .textfield > input{

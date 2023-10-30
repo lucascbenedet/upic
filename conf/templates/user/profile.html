@@ -1,11 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Imagens de Usuários</title>
 </head>
 <body>
-    <h1>PERFIL DO USUARIO</h1>
+    <h1 class="posts-title">Posts</h1>
+    <div class="image-grid">
+        
+        {% for image in user_images %}
+        <div class="post-container">
+            <a class="user-image" href="{% url 'image:render_image' image.id %}">
+                <div >
+                    <img src="{{ image.image.url }}" alt="{{ image.name }}">
+                </div>
+            </a>
+            <h4>{{ image.title }}</h4>
+        </div>
+        
+        {% endfor %}
+    </div>
 </body>
 </html>
+{% endblock %}
