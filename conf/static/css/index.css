@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: space-between; /* Itens na extrema esquerda e direita */
     align-items: center;
-    background-color: transparent;
+    background-color: #15061a;
     padding: 10px 20px;
 }
 
@@ -120,6 +120,10 @@ body {
     to {
         transform: translateY(0);
     }
+}
+
+.block-content {
+    margin-top: 65px;
 }
 
 
