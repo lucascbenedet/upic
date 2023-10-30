@@ -42,12 +42,12 @@ def render_image(request,image_id):
             'comments' : Comment.objects.filter(image_id=image_id)
         }
         return render(request,'image.html',context=image)
-    elif request.method == 'POST':
-        comment = request.POST.get('comment')
-        user = request.user
-        post = Comment.objects.create(user=user, text=comment, image_id= image_id)
-        post.save()
-        return redirect('image:render_image',image_id=image_id)        
+    # elif request.method == 'POST':
+    #     comment = request.POST.get('comment')
+    #     user = request.user
+    #     post = Comment.objects.create(user=user, text=comment, image_id= image_id)
+    #     post.save()
+    #     return redirect('image:render_image',image_id=image_id)        
 
 
 from django.http import JsonResponse

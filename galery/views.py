@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-from .models import Galery
-from django.contrib.auth.decorators import login_required
-
-@login_required(login_url='auth:user_login')
-def render_gallery(request):
-    print(request.user.username)
-    gallerys = Galery.objects.filter(user=request.user)
-    return render(request,'gallery.html')
-=======
 from django.shortcuts import render,redirect,get_object_or_404 
 from django.contrib.auth.decorators import login_required
 from .models import Galery
@@ -44,4 +33,3 @@ def delete_gallery(request, pk):
 
 
 
->>>>>>> 87427c519e435404e99e885966fd686974a5239e
