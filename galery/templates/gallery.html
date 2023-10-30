@@ -1,11 +1,85 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
 </head>
 <body>
-    <h1>GALLERY</h1>
+    <div class="title-create">
+        <h1>GALLERY</h1>
+        <button class="gallery-add" onclick="openModalGallery()">
+            <span class="add-label">New +</span>
+        </button>
+
+    </div>
+    
+    <div class="image-grid">
+        {% for gallery in gallerys %}
+        <div class="user-image">
+            <a href="{% url 'gallery:render-gallery' gallery.id %}">{{ gallery.name }}</a>
+           <a href="{% url 'gallery:delete-gallery' gallery.id %}" class="delete-action" onclick="return confirmDelete(event, '{{ gallery.id }}')">
+            <i class="fas fa-trash-alt delete-icon"></i>
+           </a>
+        </div>
+        {% endfor %}
+    </div>
+
+     <!-- Modal -->
+     <div id="uploadModalGallery" class="modal-gallery">
+        <div class="modal-content-gallery">
+            <span class="close-gallery" onclick="closeModalGallery()">&times;</span>
+            <form method="post" action="{% url 'gallery:create-gallery' %}" class="upload-form">
+                {% csrf_token %}
+                <div class="text-field">
+                    <label for="name">Title</label>
+                    <input type="text" name="name" placeholder="Description">    
+                </div>
+                <input type="submit" value="Upload" class="modal-button">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModalGallery() {
+            var modal = document.getElementById('uploadModalGallery');
+            modal.style.display = 'block';
+        }
+        
+        function closeModalGallery() {
+            var modal = document.getElementById('uploadModalGallery');
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            var modal = document.getElementById('uploadModalGallery');
+            if (event.target === modal) {
+                closeModalGallery();
+            }
+        }
+        </script>
+
+    <script>
+        function confirmDelete(event, galleryId) {
+        var confirmation = confirm("Tem certeza de que deseja excluir esta galeria?");
+        if (confirmation) {
+            window.location.href = "{% url 'gallery:delete-gallery' 0 %}".replace('0', galleryId);
+        } else {
+            // Impede a ação padrão do link (navegar para a URL)
+            return event.preventDefault();
+        }
+    }
+    </script>
 </body>
+
 </html>
+{% endblock %}

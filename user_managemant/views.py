@@ -20,7 +20,6 @@ def user_login(request):
             return render(request,'user_login.html', context={'errors' : 'Invalid username or password',
                                                               'username' : username})
         
-        return HttpResponse('LOGIN INVÁLIDO')
     
 def register(request):
     if request.method == 'GET':
