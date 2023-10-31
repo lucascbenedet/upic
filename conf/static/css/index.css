@@ -15,12 +15,13 @@ body {
     display: flex;
     justify-content: space-between; /* Itens na extrema esquerda e direita */
     align-items: center;
-    background-color: #15061a;
+    background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(36,12,44,1) 46%, rgba(33,12,41,1) 100%);   
     padding: 10px 20px;
-    box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
-    -webkit-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
-    -moz-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
+    box-shadow: -2px 9px 16px -14px #c22c4f;
+    -webkit-box-shadow: -2px 9px 16px -14px #c22c4f;
+    -moz-box-shadow: -2px 9px 16px -14px #c22c4f;
     z-index: 1;
+    height: 7vh;
 }
 
 .navbar-logo img {

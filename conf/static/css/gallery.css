@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #15061a;
+    background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(36,12,44,1) 46%, rgba(33,12,41,1) 100%);
 }
 
 h1{

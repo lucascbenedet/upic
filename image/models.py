@@ -23,7 +23,7 @@ class Like(models.Model):
         db_table = 'like'
 
 class Comment(models.Model):
-    text = models.CharField(max_length=255)
+    text = models.CharField(max_length=70,blank=False, null=False)
     posted = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     image = models.ForeignKey(Image,on_delete=models.CASCADE)

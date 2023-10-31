@@ -23,16 +23,27 @@
         
         <form method="post">
             {% csrf_token %}
-            <input type="text" placeholder="Faça um comentário" name="comment" id="">
-            <input type="submit" value=">">
+            <div class="type-comment">
+                <input type="text" placeholder="Faça um comentário" name="comment-field" id="comment-field" class="comment-field">
+                <span id="charCountMessage" style="color: red;" class="error-message"></span>
+                <button type="submit" id="submitBtn" disabled class="button-comment">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 12l-20 12 5-12-5-12z"/></svg>
+                </button>
+            </div>
         </form>
 
-        <div class="comments">
+        <div id="comments" class="comments">
+            {% if not comments %}
+            <div>
+                <h1>Nenhum comentário</h1>
+            </div>
+            {% else %}
             {% for comment in comments %}
             <div class="comment">
                 <strong>{{comment.user.username}} </strong>{{comment.text}}
             </div>
             {% endfor %}
+            {% endif %}
         </div>
     </div>
 
@@ -69,6 +80,26 @@
             }
         });
     });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var commentInput = document.getElementById("comment-field");
+        var submitBtn = document.getElementById("submitBtn");
+        var charCountMessage = document.getElementById("charCountMessage");
+        var charLimit = 70 // Defina aqui o limite de caracteres desejado.
+
+        commentInput.addEventListener("input", function() {
+            var comment = commentInput.value;
+            if (comment.length > charLimit) {
+                charCountMessage.textContent = "Limite de caracteres excedido.";
+                submitBtn.setAttribute("disabled", "disabled");
+            } else {
+                charCountMessage.textContent = "";
+                submitBtn.removeAttribute("disabled");
+            }
+        });
+    });
+
 </script>
 
 
