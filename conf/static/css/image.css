@@ -17,7 +17,7 @@ body {
 
 .image-container {
     align-self: center;
-    max-width: 600px;
+    max-width: 400px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -25,14 +25,7 @@ body {
     height: 100vh;
 }
 
-.background{
-    height: 100%;
-    padding: 0 40px;
-    background-color: rgb(17, 17, 17);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 /* Estilos da imagem */
 .image {
@@ -65,7 +58,7 @@ body {
     flex-direction: column;
     overflow-y: auto;
     width: 100%;
-    max-height: 12em;
+    max-height: 8em;
 }
 
 .comment {

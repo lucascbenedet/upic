@@ -8,7 +8,7 @@ body {
 }
 
 .navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -20,6 +20,7 @@ body {
     box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
     -webkit-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
     -moz-box-shadow: -2px 9px 16px -14px rgba(229,32,121,0.96);
+    z-index: 1;
 }
 
 .navbar-logo img {
@@ -100,7 +101,7 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 3px;
-    width: 30vh;
+    width: 50vh;
     height: fit-content;
     animation: slideDown 1s;
     justify-content: center;
@@ -168,5 +169,8 @@ form{
         transform: translateY(0);
     }
 }
+
+
+
 
 

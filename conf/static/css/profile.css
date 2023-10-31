@@ -5,6 +5,7 @@
 
 body {
     margin: 0;
+    background-color: #15061a;
 }
 
 .image-grid {
@@ -24,6 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    border-radius: 5px;
 }
 
 .user-image img {
