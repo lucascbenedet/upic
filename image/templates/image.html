@@ -86,22 +86,24 @@
         var commentInput = document.getElementById("comment-field");
         var submitBtn = document.getElementById("submitBtn");
         var charCountMessage = document.getElementById("charCountMessage");
-        var charLimit = 70 // Defina aqui o limite de caracteres desejado.
+        var charLimit = 70; // Defina aqui o limite de caracteres desejado.
 
         commentInput.addEventListener("input", function() {
-            var comment = commentInput.value;
+            var comment = commentInput.value.trim(); // Remova os espaços em branco
+
             if (comment.length > charLimit) {
-                charCountMessage.textContent = "Limite de caracteres excedido.";
+                charCountMessage.textContent = "Limite de caracteres excedido ou campo vazio.";
                 submitBtn.setAttribute("disabled", "disabled");
-            } else {
+            } else if (comment === ""){
+                submitBtn.setAttribute("disabled", "disabled");
+                
+            }else{
                 charCountMessage.textContent = "";
                 submitBtn.removeAttribute("disabled");
             }
         });
     });
-
 </script>
-
 
 
 
