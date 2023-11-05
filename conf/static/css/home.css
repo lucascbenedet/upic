@@ -15,22 +15,31 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 body {
-  background: linear-gradient(
-    -90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(36, 12, 44, 1) 46%,
-    rgba(33, 12, 41, 1) 100%
-  );
+  background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(36,12,44,1) 46%, rgba(33,12,41,1) 100%);
 }
 
-.block-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.image-grid img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 16px #333;
+  transition: all 1.5s ease;
+}
+
+.image-grid img:hover {
+  box-shadow: 0 0 32px #333;
 }
 
 .image-container {
@@ -48,11 +57,27 @@ body {
   -moz-box-shadow: 3px 0px 37px -28px #c22c4f;
 }
 
-/* Estilos da imagem */
-.image {
+.image-container img {
   max-width: 100%;
-  height: auto;
-  margin-top: 3em;
+  border-radius: 10px; /* A mesma borda arredondada para a imagem */
+  opacity: 0.9; /* Ajuste a opacidade conforme necessário (0 a 1) */
+  transition: opacity 0.3s; /* Adiciona uma transição suave */
+}
+
+.image-container img:hover {
+    opacity: 3; /* Define a opacidade total ao passar o mouse */
+}
+
+.title-create {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.add-label {
+  font-size: 20px;
 }
 
 /* Estilos do botão "Like" */
@@ -128,7 +153,6 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 h1 {
   color: #646464;
   margin: 0;
@@ -139,9 +163,4 @@ h1 {
 .error-message {
   position: absolute;
   bottom: -20px;
-}
-
-.blurred-background {
-  filter: blur(5px); /* Ajuste o valor para controlar o nível de desfoque */
-  transition: filter 0.5s ease; /* Adicione uma transição suave */
 }

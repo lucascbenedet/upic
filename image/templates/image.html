@@ -1,7 +1,6 @@
 {% extends "index.html" %}
 {% load static %}
 
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -10,17 +9,16 @@
     <link rel="stylesheet" href="{% static 'css/image.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image</title>
+    <title>UPIC</title>
 </head>
 
-<body>
-
+<body class="blurred-background">
     <div class="image-container">
         <img class="image" src="{{ image.url }}" alt="Image">
         <div class="like-button">
             <i id="like-heart" class="far fa-heart {% if is_liked %}fas{% endif %}"></i>
         </div>
-        
+
         <form method="post">
             {% csrf_token %}
             <div class="type-comment">
@@ -47,67 +45,57 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const likeButton = document.getElementById("like-heart");
+            let isLiked = likeButton.classList.contains("fas");
+            const image_id = "{{ image_id }}";
+            const csrfToken = "{{ csrf_token }}";
 
-
-<script>
-    
-    $(document).ready(function() {
-        const likeButton = document.getElementById("like-heart");
-        let isLiked = likeButton.classList.contains("fas");
-        const image_id = "{{ image_id }}";
-        const csrfToken = "{{ csrf_token }}";
-    
-        likeButton.addEventListener("click", () => {
-            $.ajax({
-                url: `/image/like/${image_id}/`,
-                type: 'POST',
-                headers: {
-                    "X-CSRFToken": csrfToken, // Inclua o token CSRF no cabeçalho da solicitação
-                },
-        success: function(data) {
-            console.log(data);
-        },
-    });
-            isLiked = !isLiked;
-            if (isLiked) {
-                likeButton.classList.remove("far");
-                likeButton.classList.add("fas");
-            } else {
-                likeButton.classList.remove("fas");
-                likeButton.classList.add("far");
-            }
+            likeButton.addEventListener("click", () => {
+                $.ajax({
+                    url: `/image/like/${image_id}/`,
+                    type: 'POST',
+                    headers: {
+                        "X-CSRFToken": csrfToken,
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    },
+                });
+                isLiked = !isLiked;
+                if (isLiked) {
+                    likeButton.classList.remove("far");
+                    likeButton.classList.add("fas");
+                } else {
+                    likeButton.classList.remove("fas");
+                    likeButton.classList.add("far");
+                }
+            });
         });
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var commentInput = document.getElementById("comment-field");
-        var submitBtn = document.getElementById("submitBtn");
-        var charCountMessage = document.getElementById("charCountMessage");
-        var charLimit = 70 // Defina aqui o limite de caracteres desejado.
+    </script>
 
-        commentInput.addEventListener("input", function() {
-            var comment = commentInput.value;
-            if (comment.length > charLimit) {
-                charCountMessage.textContent = "Limite de caracteres excedido.";
-                submitBtn.setAttribute("disabled", "disabled");
-            } else {
-                charCountMessage.textContent = "";
-                submitBtn.removeAttribute("disabled");
-            }
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var commentInput = document.getElementById("comment-field");
+            var submitBtn = document.getElementById("submitBtn");
+            var charCountMessage = document.getElementById("charCountMessage");
+            var charLimit = 70;
+
+            commentInput.addEventListener("input", function() {
+                var comment = commentInput.value;
+                if (comment.length > charLimit) {
+                    charCountMessage.textContent = "Limite de caracteres excedido.";
+                    submitBtn.setAttribute("disabled", "disabled");
+                } else {
+                    charCountMessage.textContent = "";
+                    submitBtn.removeAttribute("disabled");
+                }
+            });
         });
-    });
-
-</script>
-
-
-
-
-
-
-    
+    </script>
 </body>
 </html>
 {% endblock %}

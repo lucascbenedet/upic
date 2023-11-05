@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'image',
     'user_managemant',
     'galery',
+    'conf'
 ]
 
 MIDDLEWARE = [
@@ -92,11 +93,8 @@ DATABASES = {
         'NAME': 'upic',
         'HOST' : 'localhost',
         'PORT' : 5432,
-        'USER' : os.getenv('DATABASE_USER'),
-        'PASSWORD' : os.getenv('DATABASE_PASSWORD'),
-        'OPTIONS' : {
-            'options': '-c search_path=core',
-        },
+        'USER' : 'postgres',
+        'PASSWORD' : 'postgres',
     }
 }
 
@@ -137,9 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'conf/static'),
+    os.path.join(BASE_DIR, "conf/static"),
 ]
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'conf/static')
 
 MEDIA_URL = '/media/'
