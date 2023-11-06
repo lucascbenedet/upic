@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.generics import ListCreateAPIView
 from .models import Image, Like, Comment
 from .serializers import (
@@ -16,9 +16,15 @@ import json
 from django.contrib.auth.decorators import login_required
 
 
+def image_preview(request, image_id):
+    image = get_object_or_404(Image, pk=image_id)
+    context = {'image': image}
+    return render(request, 'image_preview.html', context)
+
 def home(request):
-    context = {"user": request.user}
-    return render(request, "index.html", context=context)
+    images = Image.objects.all()  
+    context = {"user": request.user, "images": images}
+    return render(request, "home.html", context=context)
 
 
 @login_required(login_url="auth:user_login")

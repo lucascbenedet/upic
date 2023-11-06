@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <meta charset="UTF-8">
+    <script src="{% static 'js/home.js' %}"></script>
+</head>
+
+<body>
+    <div class="image-grid">
+        {% for image in images %}
+            <a class="user-image" href="{% url 'image:render_image' image.id %}">
+                <div class="image-container">
+                    <img src="{{ image.image.url }}" alt="{{ image.title }}" class="gallery-image" data-user="{{ image.user.username }}" data-image-id="{{ image.id }}">
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %}
