@@ -47,6 +47,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
     <script>
         $(document).ready(function() {
             const likeButton = document.getElementById("like-heart");
@@ -84,18 +85,26 @@
             var charCountMessage = document.getElementById("charCountMessage");
             var charLimit = 70;
 
-            commentInput.addEventListener("input", function() {
-                var comment = commentInput.value;
-                if (comment.length > charLimit) {
-                    charCountMessage.textContent = "Limite de caracteres excedido.";
-                    submitBtn.setAttribute("disabled", "disabled");
-                } else {
-                    charCountMessage.textContent = "";
-                    submitBtn.removeAttribute("disabled");
-                }
-            });
+        commentInput.addEventListener("input", function() {
+            var comment = commentInput.value;
+            if (comment.length > charLimit) {
+                charCountMessage.textContent = "Limite de caracteres excedido.";
+                submitBtn.setAttribute("disabled", "disabled");
+            } else {
+                charCountMessage.textContent = "";
+                submitBtn.removeAttribute("disabled");
+            }
         });
-    </script>
+    });
+
+</script>
+
+
+
+
+
+
+    
 </body>
 </html>
 {% endblock %}

@@ -36,7 +36,7 @@ body {
 .image-container {
   padding: 0 15px;
   align-self: center;
-  max-width: 600px;
+  width: 600px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -50,6 +50,7 @@ body {
 
 /* Estilos da imagem */
 .image {
+  align-self: center;  
   max-width: 100%;
   height: auto;
   margin-top: 3em;
@@ -103,7 +104,7 @@ body {
   border: none;
   color: white;
   border-radius: 5px;
-  padding: 10px;
+  padding: 3px;
   outline: none;
 }
 
@@ -113,7 +114,7 @@ body {
 
 .button-comment {
   border: 1px solid #c22c4f;
-  padding: 10px;
+  padding: 3px;
   border-radius: 5px;
   background-color: transparent;
   color: #c22c4f;
