@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'image',
     'user_managemant',
     'galery',
-    'conf'
 ]
 
 MIDDLEWARE = [
@@ -93,8 +92,9 @@ DATABASES = {
         'NAME': 'upic',
         'HOST' : 'localhost',
         'PORT' : 5432,
-        'USER' : 'postgres',
-        'PASSWORD' : 'postgres',
+        'USER' : os.getenv('DATABASE_USER'),
+        'PASSWORD' : os.getenv('DATABASE_PASSWORD'),
+        'OPTIONS' : {"options": "-c search_path=core"}
     }
 }
 
