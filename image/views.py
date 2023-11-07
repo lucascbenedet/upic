@@ -16,13 +16,8 @@ import json
 from django.contrib.auth.decorators import login_required
 
 
-def image_preview(request, image_id):
-    image = get_object_or_404(Image, pk=image_id)
-    context = {'image': image}
-    return render(request, 'image_preview.html', context)
-
 def home(request):
-    images = Image.objects.all()  
+    images = Image.objects.all()
     context = {"user": request.user, "images": images}
     return render(request, "home.html", context=context)
 
@@ -46,17 +41,18 @@ def render_image(request, image_id):
         image_object = Image.objects.get(id=image_id)
         image = {
             "image": image_object.image,
+            "image_title": image_object.title,
             "image_id": image_object.id,
             "is_liked": Like.objects.filter(user=request.user, image_id=image_id),
             "comments": Comment.objects.filter(image_id=image_id).order_by("-posted"),
         }
         return render(request, "image.html", context=image)
     elif request.method == "POST":
-            comment = request.POST.get("comment-field")
-            user = request.user
-            post = Comment.objects.create(user=user, text=comment, image_id=image_id)
-            post.save()
-            return redirect("image:render_image", image_id=image_id)
+        comment = request.POST.get("comment-field")
+        user = request.user
+        post = Comment.objects.create(user=user, text=comment, image_id=image_id)
+        post.save()
+        return redirect("image:render_image", image_id=image_id)
 
 
 from django.http import JsonResponse
@@ -71,3 +67,14 @@ def like_photo(request, post_id):
         return JsonResponse({"error": str(e)})
 
     return JsonResponse({"message": "Like updated successfully"})
+
+
+def delete_comment(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+    image_id = comment.image_id
+    print(image_id)
+    if request.user == comment.user:
+        comment.delete()
+        return redirect("image:render_image", image_id=image_id)
+    else:
+        return HttpResponse("Sem permissão para deletar esse comentário")

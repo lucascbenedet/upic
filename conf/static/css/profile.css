@@ -43,8 +43,18 @@ body {
 
 .posts-title {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   padding: 20px 0;
+}
+
+.user-profile {
+  background: rgba(255, 255, 255, 0.04);
+  max-width: 1200px;
+  margin: 50px auto 0;
+  padding: 20px 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
 }
 
 .post-container {
@@ -60,4 +70,55 @@ h1 {
 
 h4 {
   color: #c22c4f;
+}
+
+.input {
+  width: 30%;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  color: white;
+  font-size: 12pt;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  background-color: #201b2c;
+}
+
+.form {
+  margin-left: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  color: #c22c4f;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.button-save {
+  background-color: #c22c4f;
+  color: white;
+  width: 10%;
+  border: none;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.button-save:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(152, 57, 124, 1) 0%,
+    rgba(176, 51, 98, 1) 44%,
+    rgba(194, 44, 79, 1) 100%
+  );
 }

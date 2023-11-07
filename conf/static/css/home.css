@@ -15,11 +15,16 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 body {
-  background: linear-gradient(-90deg, rgba(0,0,0,1) 0%, rgba(36,12,44,1) 46%, rgba(33,12,41,1) 100%);
+  background: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(36, 12, 44, 1) 46%,
+    rgba(33, 12, 41, 1) 100%
+  );
 }
 
 .image-grid {
@@ -50,7 +55,6 @@ body {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  height: 93vh;
   background-color: #18091e;
   box-shadow: 3px 0px 37px -28px #c22c4f;
   -webkit-box-shadow: 3px 0px 37px -28px #c22c4f;
@@ -65,7 +69,7 @@ body {
 }
 
 .image-container img:hover {
-    opacity: 3; /* Define a opacidade total ao passar o mouse */
+  opacity: 3; /* Define a opacidade total ao passar o mouse */
 }
 
 .title-create {
@@ -80,87 +84,6 @@ body {
   font-size: 20px;
 }
 
-/* Estilos do botão "Like" */
-
-#like-heart {
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s;
-  font-size: 20px;
-  padding: 0.5em 0;
-}
-
-#like-heart.fas {
-  color: #c22c4f;
-}
-
-/* Estilos da seção de comentários */
-.comments {
-  display: flex;
-  flex: 1;
-  margin-top: 20px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  overflow-y: auto;
-  width: 100%;
-  max-height: 8em;
-}
-
-.comment {
-  color: white;
-  margin-bottom: 10px;
-  line-break: anywhere;
-}
-
-.type-comment {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.comment-field {
-  height: 100%;
-  width: 100%;
-  margin-right: 15px;
-  background-color: #3d3d3d;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  padding: 10px;
-  outline: none;
-}
-
-.comment-field::placeholder {
-  color: white;
-}
-
-.button-comment {
-  border: 1px solid #c22c4f;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: transparent;
-  color: #c22c4f;
-  cursor: pointer;
-}
-
-.button-comment svg {
-  fill: #c22c4f;
-}
-
-.button-comment:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-h1 {
-  color: #646464;
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
-}
-
-.error-message {
-  position: absolute;
-  bottom: -20px;
+.user-image {
+  height: fit-content;
 }

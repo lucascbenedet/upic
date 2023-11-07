@@ -48,9 +48,15 @@ body {
   -moz-box-shadow: 3px 0px 37px -28px #c22c4f;
 }
 
+.image-title {
+  color: #c22c4f;
+  font-size: 2em;
+  line-break: anywhere;
+}
+
 /* Estilos da imagem */
 .image {
-  align-self: center;  
+  align-self: center;
   max-width: 100%;
   height: auto;
   margin-top: 3em;
@@ -87,6 +93,9 @@ body {
   color: white;
   margin-bottom: 10px;
   line-break: anywhere;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .type-comment {
@@ -106,6 +115,15 @@ body {
   border-radius: 5px;
   padding: 3px;
   outline: none;
+}
+
+.form-comment {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5em;
 }
 
 .comment-field::placeholder {
@@ -142,7 +160,11 @@ h1 {
   bottom: -20px;
 }
 
-.blurred-background {
-  filter: blur(5px); /* Ajuste o valor para controlar o nível de desfoque */
-  transition: filter 0.5s ease; /* Adicione uma transição suave */
+.delete-comment-button {
+  background: none;
+  border: none;
+  color: red;
+  padding: 0;
+  cursor: pointer;
+  margin-right: 10px;
 }

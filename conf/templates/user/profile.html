@@ -16,7 +16,24 @@
     <title>UPIC</title>
 </head>
 <body>
-    <h1 class="posts-title">my gallery</h1>
+    <div class="user-profile">
+        <h1 class="profile">{{ user.username }}</h1>
+        {% if request.user == user %}
+        <form method="post" action="{% url 'auth:alter_user' %}" class="form">
+            {% csrf_token %}
+            <label class="label" for="email">EMAIL</label>
+            <input type="email" name="eamail" id="" class="input" value="{{ user.email }}">
+            <label class="label" for="first_name">FIRST NAME</label>
+            <input type="text" class="input" value="{{ user.first_name }}" name="first_name">
+            <input type="submit" value="SAVE" class="button-save">
+
+        </form>
+        {% endif %}
+    </div>
+
+
+
+    <h1 class="posts-title">my posts</h1>
     <div class="image-grid">
         
         {% for image in user_images %}

@@ -15,23 +15,26 @@
     <title>UPIC</title>
 </head>
 <body>
-    <div class="title-create">
-        <h1>gallery</h1>
-        <button class="gallery-add" onclick="openModalGallery()">
-            <span class="add-label">+</span>
-        </button>
 
-    </div>
-    
-    <div class="image-grid">
-        {% for gallery in gallerys %}
-        <div class="user-image">
-            <a href="{% url 'gallery:render-gallery' gallery.id %}">{{ gallery.name }}</a>
-           <a href="{% url 'gallery:delete-gallery' gallery.id %}" class="delete-action" onclick="return confirmDelete(event, '{{ gallery.id }}')">
-            <i class="fas fa-trash-alt delete-icon"></i>
-           </a>
+    <div class="container">
+        <div class="title-create">
+            <h1>my galleries</h1>
+            <button class="gallery-add" onclick="openModalGallery()">
+                <span class="add-label">+</span>
+            </button>
+
         </div>
-        {% endfor %}
+        
+        <div class="image-grid">
+            {% for gallery in gallerys %}
+            <div class="user-image">
+                <a href="{% url 'gallery:render-gallery' gallery.id %}">{{ gallery.name }}</a>
+            <a href="{% url 'gallery:delete-gallery' gallery.id %}" class="delete-action" onclick="return confirmDelete(event, '{{ gallery.id }}')">
+                <i class="fas fa-trash-alt delete-icon"></i>
+            </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
      <!-- Modal -->
@@ -52,7 +55,7 @@
     <script>
         function openModalGallery() {
             var modal = document.getElementById('uploadModalGallery');
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         }
         
         function closeModalGallery() {
