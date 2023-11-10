@@ -160,3 +160,19 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ],
 }
+
+# STORAGES = {
+#     "default": {
+#         "BACKEND":'storages.backends.s3boto3.S3Boto3Storage',
+#         "OPTIONS": {
+#             'access_key' : os.getenv('AWS_ACCESS_KEY'),
+#             'secret_key' : os.getenv('AWS_SECRET_ACCESS_KEY'),
+#             'bucket_name' : os.getenv('AWS_STORAGE_BUCKET_NAME'),
+#             'endpoint_url' : os.getenv('AWS_S3_ENDPOINT_URL'),
+#             'object_parameters' : {},
+#         },
+#     },
+#     'staticfiles' : {
+#         "BACKEND":'django.contrib.staticfiles.storage.StaticFilesStorage',
+#     },
+# }
