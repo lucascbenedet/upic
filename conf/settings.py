@@ -34,7 +34,7 @@ SECRET_KEY = "django-insecure-)g8h@dlr19is*fb$05g_=l@$w5d0b8bfz)!s%0p*qj69s)v!r3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -161,18 +161,18 @@ REST_FRAMEWORK = {
     ],
 }
 
-# STORAGES = {
-#     "default": {
-#         "BACKEND":'storages.backends.s3boto3.S3Boto3Storage',
-#         "OPTIONS": {
-#             'access_key' : os.getenv('AWS_ACCESS_KEY'),
-#             'secret_key' : os.getenv('AWS_SECRET_ACCESS_KEY'),
-#             'bucket_name' : os.getenv('AWS_STORAGE_BUCKET_NAME'),
-#             'endpoint_url' : os.getenv('AWS_S3_ENDPOINT_URL'),
-#             'object_parameters' : {},
-#         },
-#     },
-#     'staticfiles' : {
-#         "BACKEND":'django.contrib.staticfiles.storage.StaticFilesStorage',
-#     },
-# }
+STORAGES = {
+    "default": {
+        "BACKEND":'storages.backends.s3boto3.S3Boto3Storage',
+        "OPTIONS": {
+            'access_key' : os.getenv('AWS_ACCESS_KEY'),
+            'secret_key' : os.getenv('AWS_SECRET_ACCESS_KEY'),
+            'bucket_name' : os.getenv('AWS_STORAGE_BUCKET_NAME'),
+            'endpoint_url' : os.getenv('AWS_S3_ENDPOINT_URL'),
+            'object_parameters' : {},
+        },
+    },
+    'staticfiles' : {
+        "BACKEND":'django.contrib.staticfiles.storage.StaticFilesStorage',
+    },
+}

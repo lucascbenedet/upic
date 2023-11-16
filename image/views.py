@@ -14,6 +14,7 @@ from rest_framework.exceptions import ValidationError
 from django.http import HttpResponse
 import json
 from django.contrib.auth.decorators import login_required
+import uuid
 
 
 def home(request):
@@ -24,9 +25,15 @@ def home(request):
 
 @login_required(login_url="auth:user_login")
 def post_image_component(request):
+
+    image_file =  request.FILES.get("image")
+    ext = image_file.name.split('.')[-1]
+    image_name = f"{uuid.uuid4()}.{ext}"
+    image_file.name = image_name
+
     data = {
         "title": request.POST.get("name"),
-        "image": request.FILES.get("image"),
+        "image": image_file,
         "user": request.user.id,
     }
     serializer = ImageSerializer(data=data)
